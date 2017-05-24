@@ -1,5 +1,5 @@
 # Dependencies
-This app requires SlackClient to work. SlackClient is maintained by the Slack Developer Tools team, and of this writing it can be found at https://pypi.python.org/pypi/slackclient. It can also be easily installed if you have pip installed, by doing `pip install slackclient`
+This app requires SlackClient 1.0.5 to work. SlackClient is maintained by the Slack Developer Tools team, and of this writing it can be found at https://pypi.python.org/pypi/slackclient. It can also be easily installed if you have pip installed, by doing `pip install slackclient`.
 
 SlackClient is the only dependency of this project. However, some Endpoint Security programs (looking at you, Kaspersky) will require you to add the bot to a trusted list, or all API requests will automatically be blocked.
 
