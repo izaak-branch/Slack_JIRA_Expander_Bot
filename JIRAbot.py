@@ -4,6 +4,7 @@ import os
 from slackclient import SlackClient
 import time
 import re
+import requests
 
 # Use environment variables for portability
 api_token = os.environ['SLACK_EXPANDER_API_TOKEN'] # Required. If not set, will result in a KeyError
@@ -16,7 +17,6 @@ bot_username = 'JIRA Expander' # Change if you want your bot to post under a dif
 sc = SlackClient(api_token)
 msgs = []
 bot_regex = re.compile(bot_regex_raw)
-
 
 hist = sc.api_call('channels.history', channel=channel, count=1)['messages']
 last = float(hist[0]['ts']) # timestamp of the latest message in the thread
