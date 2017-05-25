@@ -1,5 +1,5 @@
 # Dependencies
-This app requires SlackClient to work. SlackClient is maintained by the Slack Developer Tools team, and of this writing it can be found at https://pypi.python.org/pypi/slackclient. It can also be easily installed if you have pip installed, by doing `pip install slackclient`
+This app requires SlackClient 1.0.5 to work. SlackClient is maintained by the Slack Developer Tools team, and of this writing it can be found at https://pypi.python.org/pypi/slackclient. It can also be easily installed if you have pip installed, by doing `pip install slackclient`.
 
 SlackClient is the only dependency of this project. However, some Endpoint Security programs (looking at you, Kaspersky) will require you to add the bot to a trusted list, or all API requests will automatically be blocked.
 
@@ -41,7 +41,7 @@ The Regular Expression you want your bot to use to find ticket names and numbers
 A URL containing an image file for your bot to use. If this is unset it's not the end of the world, you'll just have the Slack default bot icon set for your bot. I highly recommend using the image found at http://cultofthepartyparrot.com/parrots/hd/gentlemanparrot.gif
 
 # Usage
-To use the bot, just ensure that the relevant environment variables are set and run ./JIRAbot.py from whereever you installed this package. It can run in the background just fine.
+To use the bot, just ensure that the relevant environment variables are set and run ./JIRAbot.py from where you installed/cloned this repository. It can run in the background just fine, and doesn't have any output unless there are errors. If you get a bunch of [Errno 13: Permission Denied] errors, this is likely your endpoint security preventing the API calls to Slack from working.
 
 I have no interest in continuing to support this project. If it doesn't work for you, sorry. I made it because I couldn't find a free bot online that does exactly this (listens to a channel and posts messages based on their content), and after I made it I thought others might find it useful. Please don't contact me asking how something works or why something is broken - it should be easy to install, easy to use, and easy to modify for your own purposes if you so choose to do so.
 
