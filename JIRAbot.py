@@ -41,6 +41,6 @@ while True:
   time.sleep(1) # Give time for new messages to hit channel
   hist = sc.api_call('channels.history', channel=channel)['messages'] # Get new messages
  except requests.exceptions.ConnectionError as err:
-  print 'Caught ConnectionError: Error ' + str(err.args[0].reason.errno) + ': ' + err.args[0].reason.message
+  print 'Caught ConnectionError: Error ' + str(err.args[0].reason.errno) + ': ' + err.args[0].reason.strerror
   print 'Trying again...'
  
