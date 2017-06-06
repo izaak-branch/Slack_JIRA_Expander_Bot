@@ -6,6 +6,11 @@ import time
 import re
 import requests
 
+# Define error handler @ top so script has access to it
+def printError(message):
+ print time.strftime("%d/%H:%M:%S - ", time.gmtime()) + message
+ print 'Trying Again...'
+
 # Use environment variables for portability
 api_token = os.environ['SLACK_EXPANDER_API_TOKEN'] # Required. If not set, will result in a KeyError
 channel = os.environ['SLACK_EXPANDER_CHANNEL'] # Required. If not set, will result in a KeyError
@@ -45,6 +50,3 @@ while True:
  except Exception as err2:
   printError('Caught Error:' + str(err2))
 
-def printError(message):
- print time.strftime("%d/%H:%M:%S - ", time.gmtime()) + message
- print 'Trying Again...'
