@@ -18,6 +18,7 @@ jira_base_url = os.environ['JIRA_BASE_URL'] # Required. If not set, will result 
 bot_regex_raw = os.environ['SLACK_EXPANDER_BOT_REGEX'] # Required. If not set, will result in a KeyError
 bot_icon_url = os.environ.get('SLACK_EXPANDER_BOT_ICON') # Optional. Not setting will result in bot having default picture
 bot_username = 'JIRA Expander' # Change if you want your bot to post under a different name
+TIMEOUT = 5 # Time between iterations of While loop
 
 sc = SlackClient(api_token)
 msgs = []
@@ -31,7 +32,7 @@ while True:
   msgs = filter(lambda a: a is not None, map(lambda x: x if 'bot_id' not in x else None, hist)) # should only get non-bot responses
   msgs = filter(lambda b: b is not None, filter(lambda a: a if float(a['ts']) >= last else None, msgs)) # should filter out old messages, if they exist
   if not msgs:
-   time.sleep(1)
+   time.sleep(TIMEOUT)
    hist = sc.api_call('channels.history', channel=channel)['messages'] # Above logic will strip out old and bot messages
    continue # if there are no new messages, wait 1 second and then go again
   
@@ -43,7 +44,7 @@ while True:
   for link in links:
    last = float(sc.api_call('chat.postMessage', channel=channel, text=link, username=bot_username, as_user=False, icon_url=bot_icon_url)['ts']) # Post links to the channel and update last
  
-  time.sleep(1) # Give time for new messages to hit channel
+  time.sleep(TIMEOUT) # Give time for new messages to hit channel
   hist = sc.api_call('channels.history', channel=channel)['messages'] # Get new messages
  except requests.exceptions.ConnectionError as err:
   printError('Caught ConnectionError: Error ' + str(err.args[0].reason.errno) + ': ' + str(err.args[0].reason.strerror))
