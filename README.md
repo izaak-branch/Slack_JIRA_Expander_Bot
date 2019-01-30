@@ -3,6 +3,8 @@ This app requires SlackClient 1.0.5 to work. SlackClient is maintained by the Sl
 
 SlackClient is the only dependency of this project. However, some Endpoint Security programs (looking at you, Kaspersky) will require you to add the bot to a trusted list, or all API requests will automatically be blocked.
 
+This app requires Python 2.7.X
+
 # Description
 
 This is a simple Slack bot written in Python designed to monitor messages sent to a single channel and act on them. This bot was primarily designed to allow a user to reference a ticket number in plaintext (i.e. TICKET-1234), and have a bot automatically chat a link to the associated ticket.
